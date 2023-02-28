@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2023-02-28 20:34:44
  * @LastEditors: maggot-code
- * @LastEditTime: 2023-02-28 22:12:48
+ * @LastEditTime: 2023-03-01 00:10:39
  * @Description:
  */
 /*
@@ -23,7 +23,8 @@ var keyCmd = &cobra.Command{
 	Use:   "key",
 	Short: "OpenAI API Key",
 	Run: func(cmd *cobra.Command, args []string) {
-		services := services.DefineKeyService()
+		services := services.UseKeyService()
+
 		if cmd.Flags().Changed("set") {
 			if len(args) == 0 {
 				cmd.Println("Please enter your OpenAI API Key")
@@ -34,6 +35,7 @@ var keyCmd = &cobra.Command{
 			services.SetKey(args[0])
 			return
 		}
+
 		if cmd.Flags().Changed("get") {
 			key, err := services.GetKey()
 			if err != nil {
@@ -43,6 +45,7 @@ var keyCmd = &cobra.Command{
 			fmt.Println(key)
 			return
 		}
+
 		if cmd.Flags().Changed("clear") {
 			services.ClearKey()
 			return

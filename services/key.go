@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2023-02-28 21:45:25
  * @LastEditors: maggot-code
- * @LastEditTime: 2023-02-28 22:04:55
+ * @LastEditTime: 2023-03-01 00:10:28
  * @Description:
  */
 package services
@@ -24,11 +24,11 @@ type KeyInterface interface {
 	ClearKey() error
 }
 
-func DefineKeyService() KeyInterface {
-	return NewServiceKey()
+func UseKeyService() KeyInterface {
+	return DefineServiceKey()
 }
 
-func NewServiceKey() *KeyService {
+func DefineServiceKey() *KeyService {
 	return &KeyService{
 		ServiceName: serviceName,
 	}
